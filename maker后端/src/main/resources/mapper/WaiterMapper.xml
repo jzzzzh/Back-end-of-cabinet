@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.maker.repository.WaiterRepository">
+    <select id="findAll" resultType="com.example.maker.entity.Waiter">
+        select * from waiters
+    </select>
+    <select id="getByID" resultType="com.example.maker.entity.Waiter">
+        select * from waiters where account = #{id}
+    </select>
+
+    <select id="deleteByID" resultType="com.example.maker.entity.Waiter">
+        delete from waiters where account = #{id}
+    </select>
+    <select id="insertByID" resultType="com.example.maker.entity.Waiter">
+        insert into waiters value(#{id},#{password})
+    </select>
+    <select id="updatePasswordByID" resultType="com.example.maker.entity.Waiter">
+        update waiters set password = #{password} where account = #{id}
+    </select>
+    <select id="getTodolist" resultType="com.example.maker.entity.Todolist">
+        select * from todolist
+    </select>
+    <select id="removeTodolist" resultType="com.example.maker.entity.Todolist">
+        delete from todolist where userID = #{id}
+    </select>
+    <select id="updateDishByID" resultType="com.example.maker.entity.Dish">
+        update dishes set dishName = #{dishName}, dishIMG = #{dishIMG}, dishDis = #{dishDis}, dishNum = #{dishNum}, dishMon = #{dishNum} where dishID = #{dishID}
+    </select>
+<!--    //修改菜单-->
+    <select id="deleteDishByID" resultType="com.example.maker.entity.Dish">
+        delete from dishes where dishID = #{dishID}
+    </select>
+<!--    //删除菜单-->
+    <select id="addDishByID" resultType="com.example.maker.entity.Dish">
+        insert into dishes value(dishName = #{dishName}, dishIMG = #{dishIMG}, dishDis = #{dishDis}, dishNum = #{dishNum}, dishMon = #{dishNum}, dishID = #{dishID})
+    </select>
+<!--    //增加菜单-->
+    <select id="addLocation" resultType="com.example.maker.entity.Location">
+        insert into locations value(UserID = #{UserID}, loca = #{loca})
+    </select>
+<!--    //提交地点-->
+    <select id="findSpeficorder" resultType="com.example.maker.entity.speficorder">
+        select speficorders where orderNumber = #{orderNumber}
+    </select>
+<!--    //查询具体订单-->
+</mapper>
